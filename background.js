@@ -16,7 +16,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
           if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
           }
-          return response.json(); // Use response.json() directly
+          return response.json(); 
         })
         .then((data) => {
           console.log("Response from server:", data);

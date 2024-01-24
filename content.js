@@ -1,9 +1,8 @@
 // content.js
-
 // Listen for messages from the extension's background script
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     // Check if the message action is "getPageData"
-    if (request.action === "getPageData") {
+    if (request.action === "scanButton") {
       console.log("Received action to getPageData",request);
       let url=request.tabUrl
       console.log("content url",url)
@@ -27,7 +26,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         for(let i=0;i<pageData.length;i++)
         {
           //replace all special character?
-          pageData[i]=pageData[i].replace(/[^a-zA-Z0-9]/g, '_');
+          pageData[i]=pageData[i].replace(/₹/g, '_');
 
         }
         
