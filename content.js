@@ -13,6 +13,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   }
   });
 
+let processeddataa;
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 
   if (request.action === "scanButton") {
@@ -35,7 +36,15 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
           console.log("Extracted data:", pageData.length);
           for (let i = 0; i < pageData.length; i++) {
               // Replace all special characters
-              pageData[i] = pageData[i].replace(/₹/g, '_');
+              pageData[i]=pageData[i].replace(/₹/g, '_');
+              pageData[i]=pageData[i].replace(/!/g, '_');
+              pageData[i]=pageData[i].replace(/@/g, '_');
+              pageData[i]=pageData[i].replace(/#/g, '_');
+              pageData[i]=pageData[i].replace(/$/g, '_');
+              pageData[i]=pageData[i].replace(/%/g, '_');
+              pageData[i]=pageData[i].replace(/^/g, '_');
+              pageData[i]=pageData[i].replace(/&/g, '_');
+              pageData[i]=pageData[i].replace(/\*/g, '_');
           }
 
           if (pageData.length === 0) {
@@ -57,11 +66,12 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
                           );
                       } else {
                           console.log("Response from background script:", response);
+                          processeddataa=response;
                       }
                   }
               );
           }
-
+          
           sendResponse({
               status: "Success",
               message: "Data processing completed in content script",

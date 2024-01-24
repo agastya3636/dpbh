@@ -1,13 +1,16 @@
 {
     "manifest_version": 3,
     "name": "dpbh",
-    "description": "This extension displays data from the current page",
+    "description": "This is a web extension used to identify dark patterns on commerce web pages",
     "version": "1.0",
     "action": {
       "default_popup": "popup.html"
       
     },
-    "permissions": ["activeTab", "scripting"],
+    "permissions": [ "activeTab",
+    "storage",
+    "scripting",
+    "tabs"],
     "content_scripts": [
       {
         "matches": ["<all_urls>"],
@@ -17,6 +20,12 @@
     "host_permissions": ["http://*/*", "https://*/*"],
     "background": {
       "service_worker": "background.js"
-    }
+    },
+    "icons": {
+      "16": "/images/ad-block-16.png",
+      "24": "/images/ad-block-24.png",
+      "32": "/images/ad-block-32.png"
+  }
+  
   }
   

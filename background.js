@@ -20,7 +20,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         })
         .then((data) => {
           console.log("Response from server:", data);
-          sendResponse({ status: "Success", message: "Data sent to the server" });
+          sendResponse(data);
         })
         .catch((error) => {
           console.error("Error sending data to server:", error);

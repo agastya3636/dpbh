@@ -43,10 +43,10 @@ document.getElementById("scanButton").addEventListener("click", () => {
                   document.getElementById("datadisplay").textContent =
                       "Error: " + chrome.runtime.lastError.message;
                   return;
-              }
-              console.log("hi" + response);
+              }else{
+              console.log("hi" + response.procdata);}
               // Check if response contains data property
-              if (response && response.data) {
+              if (response?.data) {
                   document.getElementById("datadisplay").textContent = response.data.join("\n");
               } else {
                   document.getElementById("datadisplay").textContent = "No data received.";
@@ -55,3 +55,4 @@ document.getElementById("scanButton").addEventListener("click", () => {
       );
   });
 });
+
