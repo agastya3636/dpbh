@@ -4,17 +4,17 @@
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     // Check if the message action is "getPageData"
     if (request.action === "getPageData") {
-      console.log("Received action to getPageData");
+      console.log("Received action to getPageData",request);
       let url=request.tabUrl
-  
+      console.log("content url",url)
       try {
         // Extract data from the current page
-        console.log("Getting page data...");
+        console.log("Getting page data...1111");
         const elements = document.querySelectorAll("body *");
         console.log("Total elements found:", elements.length);
   
         // Filter and map elements to get non-empty, visible text
-        const pageData = Array.from(elements)
+        let pageData = Array.from(elements)
           .filter(
             (element) =>
               element.innerText &&
@@ -23,8 +23,15 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
           )
           .map((element) => element.innerText.trim());
   
-        console.log("Extracted data:", pageData);
-  
+        console.log("Extracted data:", pageData.length);
+        for(let i=0;i<pageData.length;i++)
+        {
+          //replace all special character?
+          pageData[i]=pageData[i].replace(/[^a-zA-Z0-9]/g, '_');
+
+        }
+        
+      
         // Check if any data is extracted before sending it to the background script
         if (pageData.length === 0) {
           console.log("No data extracted from the page.");

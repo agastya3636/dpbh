@@ -4,7 +4,7 @@
     "description": "This extension displays data from the current page",
     "version": "1.0",
     "action": {
-      "default_popup": "popup.html",
+      "default_popup": "popup.html"
       
     },
     "permissions": ["activeTab", "scripting"],

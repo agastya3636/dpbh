@@ -2,12 +2,15 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     if (request.action === "sendDataToServer") {
       console.log("Data received in background script:", request.data);
       console.log("ul:",request.url)
-      fetch("http://127.0.0.1:3000/data", {
+      d={ data: request.data ,url :request.url}
+      fetch("http://127.0.0.1:8000/data", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ data: request.data ,url :request.url}),
+        
+        body: JSON.stringify(d),
+       
       })
         .then((response) => {
           if (!response.ok) {
