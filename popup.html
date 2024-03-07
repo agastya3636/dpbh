@@ -1,24 +1,3 @@
-<!-- popup.html -->
-<!DOCTYPE html>
-<!-- <html>
-  <head>
-    <title>Data Display</title>
-    <style>
-      body {
-        width: 300px;
-        padding: 10px;
-      }
-    </style>
-  </head>
-  <body>
-    <ul id="dataDisplay">
-      No data loaded yet.
-    </ul>
-    <button id="loadData">Load Data</button>
-    <script src="popup.js"></script>
-  </body>
-</html> -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,83 +10,55 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="main">
-    <h2 class="heading">Dark Patterns Detector</h2>
-    <!-- <div class="dark-patterns">
-      Dark Patterns we are getting:-
-    </div> -->
-    <div class="items">
-      <div class="patterns">
-        <div class="ads">
-          Ads: 
-        </div>
-        <div class="result" id="ads_result">
-          Loading...
-        </div>
-      </div>
-      <div class="patterns">
-        <div class="ads">
-          Free Trials: 
-        </div>
-        <div class="result" id="trials_result">
-          Loading...
-        </div>
-      </div>
-
-      <!-- Button  -->
-     <button class="not_per" id="scanButton"> Scan more Dark Patterns</button>
-
-      <!-- division which will show up on clicking button  -->
-      <div class="notification_div">
-      <div class="patterns">
-        <div class="ads">
-          Notification: 
-        </div>
-        <div class="result">
-          <svg class="iconss" xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#009912" d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
-          Allowed
-        </div>
-      </div>
-      <div class="patterns">
-        <div class="ads">
-          Permissions: 
-        </div>
-        <div class="result">
-          <svg class="iconns" xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#00851b" d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>
-          location
-        </div>
-      </div>
-      <div class="patterns">
-        <div class="ads">
-          Redirection: 
-        </div>
-        <div class="result">
-          <svg class="iconns" xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#fa0000" d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
-          Denied
-        </div>
-      </div>
-      <div class="patterns">
-        <div class="ads">
-          Deceptions:
-        </div>
-        <div class="result">
-          Hurry Up Limited Stocks
-        </div>
-      </div>
-    </div>
+    <div class="head">
+      <img id="head-logo" src="images/logo-removebg.png" alt="logo">
+      <h1 id="head-title">Dark Pattern Detector</h1>
     </div>
 
-    <div class="price">
-    <svg class="price_svg" xmlns="http://www.w3.org/2000/svg" height="25" width="25" viewBox="0 0 512 512"><path fill="#005ca3" d="M64 64c0-17.7-14.3-32-32-32S0 46.3 0 64V400c0 44.2 35.8 80 80 80H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H80c-8.8 0-16-7.2-16-16V64zm406.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L320 210.7l-57.4-57.4c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L240 221.3l57.4 57.4c12.5 12.5 32.8 12.5 45.3 0l128-128z"/></svg>
-      <p id="price-name">Check Price Trend</p>
-      <a class="price-anchor" href="price.html"> → </a>
+  <div class="content">
+    <div class="ads boxes">
+      <h2>Ads </h2>
+      <div class="value" id="ads-value">
     </div>
-    <p id="datadisplay">
-      content here
-    </p>
-    <script src="popup.js"></script>
+    </div>
+    <div class="ads boxes">
+      <h2> AutoRenewal Free Trial </h2>
+      <div class="value" id="freetrial-value">
+    </div>
+    </div>
   </div>
+
+  <h1 id="more">Scan for More Dark Patterns </h1>
+  <hr>
+  <div class="buttons">
+    
+    <a href="/price.html">
+  <button id="not_per"> Notification and Permissions </button>
+</a>
+<a href="/price.html">
+  <button id="ch_redi"> Check Redirection</button></a>
+  <a href="/price.html">
+    <button id="ssl"> SSL and Domain Check </button>
+  </a>
+ <a href="/price.html">
+  <button id="ui_decep">Scan for UI deceptions</button>
+ </a>
+  <a href="/price.html">
+    <button id="price-trend">Check Price Trend </button>
+  </a>
+  <div id="loadingspinner"></div>
+</div>
+
+  </div>
+<script src="popup.js"></script>
+
 </body>
 </html>
